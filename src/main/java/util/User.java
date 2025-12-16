@@ -8,6 +8,7 @@ public class User implements Serializable {
     private String username;
     private String email;
     private int jobId; // Foreign Key ID
+    private String jobTitle;
 
     public User() {}
 
@@ -26,5 +27,7 @@ public class User implements Serializable {
     public void setEmail(String email) { this.email = email; }
     public int getJobId() { return jobId; }
     public void setJobId(int jobId) { this.jobId = jobId; }
+    public String getJobTitle() { return jobTitle; }
+    public void setJobTitle(String jobTitle) { this.jobTitle = jobTitle; }
     
 }

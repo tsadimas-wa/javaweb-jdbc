@@ -1,4 +1,9 @@
 /home/rg/NetBeansProjects/hrproject/src/main/java/gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.java
 /home/rg/NetBeansProjects/hrproject/src/main/java/gr/uniwa/ice/hrproject/TestDbServlet.java
+/home/rg/NetBeansProjects/hrproject/src/main/java/gr/uniwa/ice/hrproject/ListUsersServlet.java
+/home/rg/NetBeansProjects/hrproject/src/main/java/util/Job.java
 /home/rg/NetBeansProjects/hrproject/src/main/java/gr/uniwa/ice/hrproject/JakartaRestConfiguration.java
 /home/rg/NetBeansProjects/hrproject/src/main/java/util/DatabaseConnection.java
+/home/rg/NetBeansProjects/hrproject/src/main/java/gr/uniwa/ice/hrproject/RegisterServlet.java
+/home/rg/NetBeansProjects/hrproject/src/main/java/util/UserDAO.java
+/home/rg/NetBeansProjects/hrproject/src/main/java/util/User.java
