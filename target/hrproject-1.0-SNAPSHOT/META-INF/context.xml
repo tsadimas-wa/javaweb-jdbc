@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/hrproject">
+    <Environment name="DB_URL" value="jdbc:postgresql://dpg-d4vvqjer433s73ee45r0-a.frankfurt-postgres.render.com:5432/projectmanage_toay" type="java.lang.String" override="false"/>
+    <Environment name="DB_USER" value="projectuser" type="java.lang.String" override="false"/>
+    <Environment name="DB_PASSWORD" value="yVbOQbqOftynM9tdakVr9nDu2OKTsNqY" type="java.lang.String" override="false"/>
+</Context>
