@@ -36,6 +36,5 @@ public class ListUsersServlet extends HttpServlet {
         request.setAttribute("userList", list);
         
         // 3. Forward the request to the JSP page
-        request.getRequestDispatcher("list_users.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("/WEB-INF/jsp/list_users.jsp").forward(request, response);    }
 }

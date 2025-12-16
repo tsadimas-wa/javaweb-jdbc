@@ -36,7 +36,7 @@
     </table>
 
     <div style="text-align: center;">
-        <a href="register.jsp" class="btn">Add New User</a>
+        <a href="register" class="btn">Add New User</a>
     </div>
 </body>
 </html>

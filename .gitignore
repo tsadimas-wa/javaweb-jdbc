@@ -1,5 +1,7 @@
 /src/main/webapp/META-INF/context.xml
 
+# target
+target
 
 # Compiled class file
 *.class

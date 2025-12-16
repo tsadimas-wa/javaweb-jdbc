@@ -29,6 +29,14 @@ public class RegisterServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        // Forward the user to the hidden JSP file
+        request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -46,9 +54,10 @@ public class RegisterServlet extends HttpServlet {
         // 4. Send response to user
         if (success) {
             // Redirect to a success page (or back to the form with a message)
-            response.sendRedirect("register.jsp?status=success");
+            response.sendRedirect("list_users");
         } else {
-            response.sendRedirect("register.jsp?status=error");
+            request.setAttribute("error", "Registration failed");
+            request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
         }
     }
 
