@@ -71,7 +71,7 @@ CREATE TABLE users (
 Ανοίξτε το project με το NetBeans (ή IntelliJ/Eclipse):
 * Κάντε Clean and Build για να κατέβουν οι βιβλιοθήκες μέσω Maven.
 * Τρέξτε το project (Run) στον Apache Tomcat server.
-📂
+
 ### Δομή Φακέλων (MVC)
 Η δομή του project ακολουθεί το πρότυπο Model-View-Controller:
 
@@ -88,3 +88,27 @@ CREATE TABLE users (
 * /testdb: Έλεγχος σύνδεσης με τη βάση δεδομένων.
 * /register: Φόρμα εγγραφής νέου χρήστη.
 * /list_users: Λίστα με όλους τους εγγεγραμμένους χρήστες.
+
+
+### ▶️ Τρόποι Εκτέλεσης
+*Μέθοδος Α: Μέσω NetBeans (GUI)
+    * Ανοίξτε το project με το NetBeans.
+    * Κάντε Clean and Build (για λήψη βιβλιοθηκών Maven).
+    * Πατήστε Run (το project θα τρέξει στον ενσωματωμένο Tomcat server).
+
+* Μέθοδος Β: Μέσω Τερματικού (Maven Cargo)
+Μπορείτε να τρέξετε την εφαρμογή χωρίς το NetBeans, απευθείας από τη γραμμή εντολών.
+Προαπαιτούμενο: Βεβαιωθείτε ότι στο pom.xml έχετε προσθέσει το cargo-maven3-plugin στο section <build><plugins>.
+
+1. Ανοίξτε τερματικό μέσα στον φάκελο του project.
+2. Εκτελέστε την εντολή:
+
+```βαση
+mvn clean package cargo:run
+```
+
+3. Η εφαρμογή θα ξεκινήσει αυτόματα (θα κατέβει local Tomcat 10).
+
+3. Ανοίξτε στον browser: http://localhost:8081/hrproject
+
+(Για τερματισμό πατήστε Ctrl + C στο τερματικό)

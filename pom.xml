@@ -40,21 +40,32 @@
     </dependencies>
     
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-maven3-plugin</artifactId>
+            <version>1.10.13</version> <configuration>
+                <container>
+                    <containerId>tomcat10x</containerId>
+                    <type>installed</type>
+                    <zipUrlInstaller>
+                        <url>https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat/10.1.18/tomcat-10.1.18.zip</url>
+                    </zipUrlInstaller>
+                </container>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <properties>
+                        <cargo.servlet.port>8081</cargo.servlet.port>
+                        <cargo.logging>high</cargo.logging>
+                    </properties>
+                    <configfiles>
+                        <configfile>
+                            <file>${project.basedir}/src/main/webapp/META-INF/context.xml</file>
+                            <todir>conf/Catalina/localhost/</todir>
+                            <tofile>ROOT.xml</tofile> </configfile>
+                    </configfiles>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-            </plugin>
-        </plugins>
-    </build>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
