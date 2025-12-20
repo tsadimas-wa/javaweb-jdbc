@@ -1,9 +1,9 @@
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/JakartaRestConfiguration.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/util/User.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/util/UserDAO.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/ListUsersServlet.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/TestDbServlet.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/util/Job.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/util/DatabaseConnection.java
-/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/RegisterServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/RegisterServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/ListUsersServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/db/DatabaseConnection.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/entity/User.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/db/UserDAO.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/entity/Job.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/TestDbServlet.java

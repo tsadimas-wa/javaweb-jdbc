@@ -3,13 +3,7 @@
 <html>
 <head>
     <title>All Users</title>
-    <style>
-        table { width: 80%; margin: 20px auto; border-collapse: collapse; font-family: sans-serif; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .btn { display: inline-block; margin: 20px; text-decoration: none; padding: 10px 20px; background: #007bff; color: white; border-radius: 5px; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
     <h2 style="text-align:center">Registered Employees</h2>

@@ -1,9 +1,9 @@
-gr/uniwa/ice/hrproject/ListUsersServlet.class
-gr/uniwa/ice/hrproject/TestDbServlet.class
 gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.class
-util/User.class
-util/DatabaseConnection.class
+gr/uniwa/ice/hrproject/db/DatabaseConnection.class
+gr/uniwa/ice/hrproject/entity/Job.class
+gr/uniwa/ice/hrproject/db/UserDAO.class
+gr/uniwa/ice/hrproject/servlet/RegisterServlet.class
+gr/uniwa/ice/hrproject/servlet/TestDbServlet.class
 gr/uniwa/ice/hrproject/JakartaRestConfiguration.class
-gr/uniwa/ice/hrproject/RegisterServlet.class
-util/Job.class
-util/UserDAO.class
+gr/uniwa/ice/hrproject/entity/User.class
+gr/uniwa/ice/hrproject/servlet/ListUsersServlet.class

@@ -9,11 +9,8 @@
 <html>
     <head>
     <title>Register User</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        form { max-width: 300px; margin: auto; }
-        input, select, button { width: 100%; margin-bottom: 10px; padding: 8px; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
 </head>
 <body>
     <h2 style="text-align:center">Create New User</h2>
