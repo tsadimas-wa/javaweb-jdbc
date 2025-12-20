@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package gr.uniwa.ice.hrproject;
+package gr.uniwa.ice.hrproject.servlet;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import util.User;
-import util.UserDAO;
+import gr.uniwa.ice.hrproject.entity.User;
+import gr.uniwa.ice.hrproject.db.UserDAO;
 
 @WebServlet("/list_users")
 public class ListUsersServlet extends HttpServlet {

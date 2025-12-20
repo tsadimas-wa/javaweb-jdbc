@@ -1,4 +1,4 @@
-package util;
+package gr.uniwa.ice.hrproject.entity;
 
 import java.io.Serializable;
 
