@@ -7,7 +7,7 @@
 ## 🚀 Χαρακτηριστικά
 
 * **Αρχιτεκτονική MVC:** Διαχωρισμός λογικής (Controller), δεδομένων (Model) και εμφάνισης (View).
-* **Database Connectivity:** Σύνδεση με PostgreSQL μέσω JDBC Driver.
+* **Database Connectivity:** Σύνδεση με MYSQL μέσω JDBC Driver.
 * **User Management:** Εγγραφή χρηστών και εμφάνιση λίστας εγγεγραμμένων χρηστών.
 * **Secure Implementation:** Χρήση `WEB-INF` για προστασία των JSP σελίδων και αποφυγή SQL Injection μέσω `PreparedStatement`.
 * **JSTL & CSS:** Καθαρός κώδικας στα Views και μοντέρνα εμφάνιση.
@@ -31,28 +31,27 @@ cd hrproject
 ```
 
 ### 2. Ρύθμιση Βάσης Δεδομένων
-Εκτελέστε τα παρακάτω SQL scripts στην PostgreSQL βάση σας (π.χ. μέσω pgAdmin ή Render Shell) για να δημιουργήσετε τους πίνακες:
+Εκτελέστε τα παρακάτω SQL scripts στην MYSQL βάση σας για να δημιουργήσετε τους πίνακες:
 
 
 ```SQL
-
--- 1. Create Jobs Table
 CREATE TABLE jobs (
-    job_id SERIAL PRIMARY KEY,
+    job_id INT PRIMARY KEY AUTO_INCREMENT,
     job_title VARCHAR(100) NOT NULL
 );
 
--- 2. Insert dummy jobs
+-- 2. Insert dummy jobs so we can link users to them
 INSERT INTO jobs (job_title) VALUES ('Software Engineer'), ('HR Manager'), ('Sales Rep');
 
--- 3. Create Users Table
 CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,  -- Η σύνταξη της MySQL
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    job_id INT REFERENCES jobs(job_id),
-    password VARCHAR(255) DEFAULT '1234' -- Προαιρετικό πεδίο αν υλοποιηθεί Login
+    job_id INT,
+    FOREIGN KEY (job_id) REFERENCES jobs(job_id)
 );
+
+
 ```
 
 ### 3. Ρύθμιση Σύνδεσης (Context.xml)
@@ -62,10 +61,14 @@ CREATE TABLE users (
 
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/hrproject">
-    <Environment name="DB_URL" value="jdbc:postgresql://localhost:5432/ΟΝΟΜΑ_ΒΑΣΗΣ" type="java.lang.String" override="false"/>
-    <Environment name="DB_USER" value="TO_USERNAME_ΣΟΥ" type="java.lang.String" override="false"/>
-    <Environment name="DB_PASSWORD" value="Ο_ΚΩΔΙΚΟΣ_ΣΟΥ" type="java.lang.String" override="false"/>
+    <Environment name="DB_URL" 
+                 value="jdbc:mysql://localhost:3306/hr_db?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC" 
+                 type="java.lang.String" override="false"/>
+
+    <Environment name="DB_USER" value="root" type="java.lang.String" override="false"/>
+    <Environment name="DB_PASSWORD" value="" type="java.lang.String" override="false"/>
 </Context>
+
 ```
 ### 4. Build & Run
 Ανοίξτε το project με το NetBeans (ή IntelliJ/Eclipse):
