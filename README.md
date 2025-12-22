@@ -1,6 +1,6 @@
 # HR Project - Java JDBC Web Application
 
-Αυτό το project είναι μια πλήρης Java Web εφαρμογή που επιδεικνύει τη σύνδεση με βάση δεδομένων PostgreSQL χρησιμοποιώντας JDBC, αρχιτεκτονική MVC, Servlets, JSP και JSTL.
+Αυτό το project είναι μια πλήρης Java Web εφαρμογή που επιδεικνύει τη σύνδεση με βάση δεδομένων MySQL χρησιμοποιώντας JDBC, αρχιτεκτονική MVC, Servlets, JSP και JSTL.
 
 Η εφαρμογή αναπτύχθηκε στα πλαίσια εκπαιδευτικού εργαστηρίου για την κατανόηση της επικοινωνίας Java και Βάσεων Δεδομένων.
 
@@ -16,7 +16,7 @@
 
 * **Java JDK 17+**
 * **Apache Tomcat 10.1+**
-* **PostgreSQL** (Database)
+* **MySQL** (Database)
 * **Maven** (Dependency Management)
 * **JDBC** (Java Database Connectivity)
 * **JSP & JSTL** (Jakarta Standard Tag Library)
