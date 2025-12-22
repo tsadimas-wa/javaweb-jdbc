@@ -1,13 +1,13 @@
 # HR Project - Java JDBC Web Application
 
-Αυτό το project είναι μια πλήρης Java Web εφαρμογή που επιδεικνύει τη σύνδεση με βάση δεδομένων PostgreSQL χρησιμοποιώντας JDBC, αρχιτεκτονική MVC, Servlets, JSP και JSTL.
+Αυτό το project είναι μια πλήρης Java Web εφαρμογή που επιδεικνύει τη σύνδεση με βάση δεδομένων SQLite χρησιμοποιώντας JDBC, αρχιτεκτονική MVC, Servlets, JSP και JSTL.
 
 Η εφαρμογή αναπτύχθηκε στα πλαίσια εκπαιδευτικού εργαστηρίου για την κατανόηση της επικοινωνίας Java και Βάσεων Δεδομένων.
 
 ## 🚀 Χαρακτηριστικά
 
 * **Αρχιτεκτονική MVC:** Διαχωρισμός λογικής (Controller), δεδομένων (Model) και εμφάνισης (View).
-* **Database Connectivity:** Σύνδεση με PostgreSQL μέσω JDBC Driver.
+* **Database Connectivity:** Σύνδεση με SQLite μέσω JDBC Driver.
 * **User Management:** Εγγραφή χρηστών και εμφάνιση λίστας εγγεγραμμένων χρηστών.
 * **Secure Implementation:** Χρήση `WEB-INF` για προστασία των JSP σελίδων και αποφυγή SQL Injection μέσω `PreparedStatement`.
 * **JSTL & CSS:** Καθαρός κώδικας στα Views και μοντέρνα εμφάνιση.
@@ -16,7 +16,7 @@
 
 * **Java JDK 17+**
 * **Apache Tomcat 10.1+**
-* **PostgreSQL** (Database)
+* **SQLite** (Database)
 * **Maven** (Dependency Management)
 * **JDBC** (Java Database Connectivity)
 * **JSP & JSTL** (Jakarta Standard Tag Library)
@@ -31,28 +31,27 @@ cd hrproject
 ```
 
 ### 2. Ρύθμιση Βάσης Δεδομένων
-Εκτελέστε τα παρακάτω SQL scripts στην PostgreSQL βάση σας (π.χ. μέσω pgAdmin ή Render Shell) για να δημιουργήσετε τους πίνακες:
+Εκτελέστε τα παρακάτω SQL scripts στην SQLite βάση σας για να δημιουργήσετε τους πίνακες:
 
 
 ```SQL
 
--- 1. Create Jobs Table
 CREATE TABLE jobs (
-    job_id SERIAL PRIMARY KEY,
-    job_title VARCHAR(100) NOT NULL
+    job_id INTEGER PRIMARY KEY AUTOINCREMENT, -- Αλλαγή εδώ
+    job_title TEXT NOT NULL                   -- Το VARCHAR γίνεται TEXT (προαιρετικά)
 );
 
--- 2. Insert dummy jobs
 INSERT INTO jobs (job_title) VALUES ('Software Engineer'), ('HR Manager'), ('Sales Rep');
 
--- 3. Create Users Table
 CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    job_id INT REFERENCES jobs(job_id),
-    password VARCHAR(255) DEFAULT '1234' -- Προαιρετικό πεδίο αν υλοποιηθεί Login
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT, -- Αλλαγή εδώ
+    username TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    job_id INTEGER REFERENCES jobs(job_id),
+    password TEXT DEFAULT '1234'
 );
+
+
 ```
 
 ### 3. Ρύθμιση Σύνδεσης (Context.xml)
@@ -62,9 +61,6 @@ CREATE TABLE users (
 
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/hrproject">
-    <Environment name="DB_URL" value="jdbc:postgresql://localhost:5432/ΟΝΟΜΑ_ΒΑΣΗΣ" type="java.lang.String" override="false"/>
-    <Environment name="DB_USER" value="TO_USERNAME_ΣΟΥ" type="java.lang.String" override="false"/>
-    <Environment name="DB_PASSWORD" value="Ο_ΚΩΔΙΚΟΣ_ΣΟΥ" type="java.lang.String" override="false"/>
 </Context>
 ```
 ### 4. Build & Run
