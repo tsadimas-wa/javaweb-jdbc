@@ -16,6 +16,7 @@ import javax.naming.NamingException;
  * @author rg
  */
 public class DatabaseConnection {
+
     // Helper method to fetch variables from Tomcat Context
     private static String getContextVariable(String name) {
         try {
@@ -29,15 +30,15 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        // 1. Load Driver
-        Class.forName("org.postgresql.Driver");
+        Class.forName("org.sqlite.JDBC");
 
-        // 2. Fetch Credentials from Tomcat Context
-        String dbUrl = getContextVariable("DB_URL");
-        String dbUser = getContextVariable("DB_USER");
-        String dbPassword = getContextVariable("DB_PASSWORD");
-        
-        // 3. Establish Connection
-        return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        // Βρίσκουμε τον φάκελο του χρήστη (π.χ. C:\Users\Giannis ή /home/giannis)
+        String userHome = System.getProperty("user.home");
+
+        // Φτιάχνουμε το Path δυναμικά
+        // Η βάση θα αποθηκευτεί στο C:\Users\Giannis\hr_project.db
+        String dbUrl = "jdbc:sqlite:" + userHome + "/hr_project.db";
+
+        return DriverManager.getConnection(dbUrl);
     }
 }
