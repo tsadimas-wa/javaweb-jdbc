@@ -30,7 +30,7 @@ public class DatabaseConnection {
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         // 1. Load Driver
-        Class.forName("org.postgresql.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
         // 2. Fetch Credentials from Tomcat Context
         String dbUrl = getContextVariable("DB_URL");
