@@ -6,4 +6,6 @@ gr/uniwa/ice/hrproject/servlet/RegisterServlet.class
 gr/uniwa/ice/hrproject/servlet/TestDbServlet.class
 gr/uniwa/ice/hrproject/JakartaRestConfiguration.class
 gr/uniwa/ice/hrproject/entity/User.class
+gr/uniwa/ice/hrproject/servlet/LoginServlet.class
 gr/uniwa/ice/hrproject/servlet/ListUsersServlet.class
+gr/uniwa/ice/hrproject/servlet/LogoutServlet.class

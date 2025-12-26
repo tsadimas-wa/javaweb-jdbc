@@ -112,3 +112,16 @@ mvn clean package cargo:run
 3. Ανοίξτε στον browser: http://localhost:8081/hrproject
 
 (Για τερματισμό πατήστε Ctrl + C στο τερματικό)
+
+
+
+Postgres in docker
+```bash
+docker run --name postgres-db --rm  \
+-e POSTGRES_PASSWORD=mypassword \
+-e POSTGRES_USER=myuser \
+-e POSTGRES_DB=hrdb \
+-p 5432:5432 \
+-v postgres-data:/var/lib/postgresql/data \
+-d postgres:17
+``` 

@@ -5,5 +5,7 @@
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/entity/User.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/ListUsersServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/LoginServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/LogoutServlet.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/RegisterServlet.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/TestDbServlet.java

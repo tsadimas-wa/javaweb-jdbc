@@ -6,25 +6,29 @@ package gr.uniwa.ice.hrproject.db;
 
 import gr.uniwa.ice.hrproject.db.DatabaseConnection;
 import gr.uniwa.ice.hrproject.entity.User;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author rg
  */
 public class UserDAO {
+
     public boolean registerUser(User user) {
         String sql = "INSERT INTO users (username, email, job_id) VALUES (?, ?, ?)";
-        
+
         // Try-with-resources ensures connection closes automatically
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getEmail());
             ps.setInt(3, user.getJobId());
@@ -36,19 +40,17 @@ public class UserDAO {
             return false;
         }
     }
-    
+
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
-        
-        // SQL Join to get User details + Job Title
-        String sql = "SELECT u.user_id, u.username, u.email, j.job_title " +
-                     "FROM users u " +
-                     "JOIN jobs j ON u.job_id = j.job_id " +
-                     "ORDER BY u.user_id ASC";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        // SQL Join to get User details + Job Title
+        String sql = "SELECT u.user_id, u.username, u.email, j.job_title "
+                + "FROM users u "
+                + "JOIN jobs j ON u.job_id = j.job_id "
+                + "ORDER BY u.user_id ASC";
+
+        try (Connection conn = DatabaseConnection.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
                 User user = new User();
@@ -64,5 +66,28 @@ public class UserDAO {
         }
         return userList;
     }
-    
+
+    public User login(String username, String password) throws SQLException {
+        String sql = "SELECT user_id, username, email FROM users WHERE username = ? AND password = crypt(?, password) LIMIT 1";
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs != null && rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+//                user.setJobTitle(rs.getString("job_title"));
+                return user;
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
+    }
 }
