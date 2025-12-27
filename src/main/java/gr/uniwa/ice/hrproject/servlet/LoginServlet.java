@@ -67,15 +67,15 @@ public class LoginServlet extends HttpServlet {
                 User user = userDAO.login(username, password);
                 if (user != null) {
                     HttpSession session = request.getSession();
-		    session.setAttribute("User", user);
-		    response.sendRedirect("home.jsp");
+		    session.setAttribute("user", user);
+		    request.setAttribute("user", user);
+		    request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
                 }
                 else {
 //                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/login");
 //		    PrintWriter out = response.getWriter();
 		    System.out.println("User not found with username=" + username);
 //		    out.println("<font color=red>No user found with given email id, please register first.</font>");
-//		    rd.include(request, response);
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 
                 }
