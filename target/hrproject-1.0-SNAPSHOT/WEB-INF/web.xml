@@ -14,4 +14,22 @@
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
+    
+    <!-- Authentication Filter Configuration -->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>gr.uniwa.ice.hrproject.filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/list_users</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/WEB-INF/jsp/list_users.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/WEB-INF/jsp/profile.jsp</url-pattern>
+    </filter-mapping>
 </web-app>
