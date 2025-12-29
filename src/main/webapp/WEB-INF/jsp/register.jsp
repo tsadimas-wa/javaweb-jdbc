@@ -1,21 +1,12 @@
-<%-- 
-    Document   : register
-    Created on : Dec 16, 2025, 10:03:19 AM
-    Author     : rg
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-    <title>Register User</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
+<c:set var="pageTitle" value="Register User" />
+<%@ include file="/WEB-INF/jsp/fragments/header.jspf" %>
 
-</head>
-<body>
-    <h2 style="text-align:center">Create New User</h2>
-    
-    <form action="register" method="post">
+<section class="form-card">
+    <h2 class="section-title">Create New User</h2>
+
+    <form action="register" method="post" class="form-grid">
         <label>Username:</label>
         <input type="text" name="username" required>
         
@@ -32,7 +23,8 @@
             <option value="3">Sales Rep</option>
         </select>
 
-        <button type="submit">Save User</button>
+        <button type="submit" class="btn">Save User</button>
     </form>
-</body>
-</html>
+</section>
+
+<%@ include file="/WEB-INF/jsp/fragments/footer.jspf" %>

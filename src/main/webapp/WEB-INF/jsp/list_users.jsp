@@ -1,12 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="jakarta.tags.core" prefix="c" %> <!DOCTYPE html>
-<html>
-<head>
-    <title>All Users</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<body>
-    <h2 style="text-align:center">Registered Employees</h2>
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
+<c:set var="pageTitle" value="All Users" />
+<%@ include file="/WEB-INF/jsp/fragments/header.jspf" %>
+
+<section class="table-card">
+    <h2 class="section-title">Registered Employees</h2>
 
     <table>
         <thead>
@@ -29,8 +27,9 @@
         </tbody>
     </table>
 
-    <div style="text-align: center;">
-        <a href="register" class="btn">Add New User</a>
+    <div class="actions">
+        <a href="${pageContext.request.contextPath}/register" class="btn">Add New User</a>
     </div>
-</body>
-</html>
+</section>
+
+<%@ include file="/WEB-INF/jsp/fragments/footer.jspf" %>

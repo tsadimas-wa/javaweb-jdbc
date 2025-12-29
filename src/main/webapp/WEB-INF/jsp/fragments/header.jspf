@@ -1,0 +1,47 @@
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
+<c:set var="loggedInUser" value="${sessionScope.user}" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${pageTitle}</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            const ctx = '${pageContext.request.contextPath}';
+            const $logout = $('#logoutLink');
+            if ($logout.length) {
+                $logout.on('click', function (e) {
+                    e.preventDefault();
+                    $.post(ctx + '/LogoutServlet')
+                        .always(function () {
+                            window.location = ctx + '/login';
+                        });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<header class="site-header">
+    <div class="site-brand">HR Project</div>
+    <nav class="site-nav">
+        <a href="${pageContext.request.contextPath}/">Home</a>
+        <a href="${pageContext.request.contextPath}/list_users">Users</a>
+        <span class="nav-end">
+            <c:choose>
+                <c:when test="${not empty loggedInUser}">
+                    <span class="nav-user">Hello, ${loggedInUser.username}</span>
+                    <a href="${pageContext.request.contextPath}/LogoutServlet" id="logoutLink" class="link-button">Logout</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login">Login</a>
+                    <a href="${pageContext.request.contextPath}/register">Register</a>
+                </c:otherwise>
+            </c:choose>
+        </span>
+    </nav>
+</header>
+<main class="site-main">

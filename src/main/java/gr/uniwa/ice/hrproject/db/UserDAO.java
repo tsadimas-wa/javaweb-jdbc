@@ -70,7 +70,9 @@ public class UserDAO {
     }
 
     public User login(String username, String password) throws SQLException {
-        String sql = "SELECT user_id, username, email FROM users WHERE username = ? AND password = crypt(?, password) LIMIT 1";
+        String sql = "SELECT u.user_id, u.username, u.email, u.job_id, j.job_title "
+                   + "FROM users u JOIN jobs j ON u.job_id = j.job_id "
+                   + "WHERE u.username = ? AND u.password = crypt(?, u.password) LIMIT 1";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.setString(2, password);
@@ -81,7 +83,8 @@ public class UserDAO {
                 user.setUserId(rs.getInt("user_id"));
                 user.setUsername(rs.getString("username"));
                 user.setEmail(rs.getString("email"));
-//                user.setJobTitle(rs.getString("job_title"));
+                user.setJobId(rs.getInt("job_id"));
+                user.setJobTitle(rs.getString("job_title"));
                 return user;
             } else {
                 return null;

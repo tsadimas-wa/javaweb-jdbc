@@ -1,25 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<body>
-    <h2>Login</h2>
-    
-    <form action="login" method="post">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
+<c:set var="pageTitle" value="Login" />
+<%@ include file="/WEB-INF/jsp/fragments/header.jspf" %>
+
+<section class="form-card">
+    <h2 class="section-title">Login</h2>
+
+    <form action="login" method="post" class="form-grid">
         <label>Username:</label>
         <input type="text" name="username" required>
         
         <label>Password:</label>
         <input type="password" name="password" required>
         
-        <button type="submit">Login</button>
+        <button type="submit" class="btn">Login</button>
     </form>
     
-    <div style="text-align: center; margin-top: 15px;">
+    <div class="form-note">
         <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Register here</a></p>
     </div>
-</body>
-</html>
+</section>
+
+<%@ include file="/WEB-INF/jsp/fragments/footer.jspf" %>
