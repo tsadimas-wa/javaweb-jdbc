@@ -43,10 +43,11 @@ public class RegisterServlet extends HttpServlet {
         // 1. Retrieve data from the JSP form
         String username = request.getParameter("username");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
         int jobId = Integer.parseInt(request.getParameter("jobId"));
 
         // 2. Create the User POJO
-        User newUser = new User(username, email, jobId);
+        User newUser = new User(username, email, password, jobId);
 
         // 3. Call DAO to save to database
         boolean success = userDAO.registerUser(newUser);

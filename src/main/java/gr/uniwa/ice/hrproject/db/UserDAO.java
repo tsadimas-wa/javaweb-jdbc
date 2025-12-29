@@ -24,19 +24,21 @@ import java.util.logging.Logger;
 public class UserDAO {
 
     public boolean registerUser(User user) {
-        String sql = "INSERT INTO users (username, email, job_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (username, email, password, job_id) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)";
 
         // Try-with-resources ensures connection closes automatically
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getEmail());
-            ps.setInt(3, user.getJobId());
+            ps.setString(3, user.getPassword());
+            ps.setInt(4, user.getJobId());
 
             int rowsInserted = ps.executeUpdate();
             return rowsInserted > 0;
 
         } catch (Exception e) {
+            System.err.println("Registration error: " + e.getMessage());
             return false;
         }
     }

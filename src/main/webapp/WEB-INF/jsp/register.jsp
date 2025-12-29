@@ -22,6 +22,9 @@
         <label>Email:</label>
         <input type="email" name="email" required>
         
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        
         <label>Select Job:</label>
         <select name="jobId">
             <option value="1">Software Engineer</option>
