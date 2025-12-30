@@ -50,10 +50,9 @@ public class AuthenticationFilter implements Filter {
             // User is logged in, allow the request to proceed
             chain.doFilter(request, response);
         } else {
-            // User is not logged in, redirect to login page
-            System.out.println("User not authenticated, redirecting to login");
-            String contextPath = httpRequest.getContextPath();
-            httpResponse.sendRedirect(contextPath + "/login");
+            // User is not logged in, send 401 Unauthorized
+            System.out.println("User not authenticated, sending 401 Unauthorized");
+            httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 

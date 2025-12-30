@@ -1,3 +1,4 @@
+gr/uniwa/ice/hrproject/util/SessionUtil.class
 gr/uniwa/ice/hrproject/servlet/RegisterServlet.class
 gr/uniwa/ice/hrproject/JakartaRestConfiguration.class
 gr/uniwa/ice/hrproject/entity/User.class
@@ -5,6 +6,7 @@ gr/uniwa/ice/hrproject/filter/AuthenticationFilter.class
 gr/uniwa/ice/hrproject/servlet/LoginServlet.class
 gr/uniwa/ice/hrproject/servlet/ListUsersServlet.class
 gr/uniwa/ice/hrproject/servlet/LogoutServlet.class
+gr/uniwa/ice/hrproject/servlet/ProfileServlet.class
 gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.class
 gr/uniwa/ice/hrproject/db/DatabaseConnection.class
 gr/uniwa/ice/hrproject/entity/Job.class

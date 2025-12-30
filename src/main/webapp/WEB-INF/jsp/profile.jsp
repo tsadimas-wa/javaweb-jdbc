@@ -1,7 +1,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ page import="gr.uniwa.ice.hrproject.util.SessionUtil" %>
+<%@ page import="java.util.Map" %>
 <c:set var="pageTitle" value="User Profile" />
 <%@ include file="/WEB-INF/jsp/fragments/header.jspf" %>
+
+<%
+    // Get session and cookie information
+    Map<String, Object> sessionAttributes = SessionUtil.getSessionAttributes(request);
+    Map<String, String> cookies = SessionUtil.getCookies(request);
+    Map<String, Object> sessionInfo = SessionUtil.getSessionInfo(request);
+    
+    request.setAttribute("sessionAttributes", sessionAttributes);
+    request.setAttribute("cookies", cookies);
+    request.setAttribute("sessionInfo", sessionInfo);
+%>
 
 <section class="profile-container">
     <h2 class="profile-header">User Profile</h2>
@@ -9,6 +22,7 @@
     <c:choose>
         <c:when test="${not empty user}">
             <div class="profile-info">
+                <h3>User Information</h3>
                 <div class="profile-field">
                     <span class="profile-label">User ID:</span>
                     <span class="profile-value">${user.userId}</span>
@@ -29,6 +43,75 @@
                     <span class="profile-label">Job ID:</span>
                     <span class="profile-value">${user.jobId}</span>
                 </div>
+            </div>
+            
+            <!-- Session Information Section -->
+            <div class="profile-info">
+                <h3>Session Information</h3>
+                <c:if test="${not empty sessionInfo}">
+                    <c:forEach var="entry" items="${sessionInfo}">
+                        <div class="profile-field">
+                            <span class="profile-label"><c:out value="${entry.key}"/>:</span>
+                            <span class="profile-value"><c:out value="${entry.value}"/></span>
+                        </div>
+                    </c:forEach>
+                </c:if>
+            </div>
+            
+            <!-- Session Attributes Section -->
+            <div class="profile-info">
+                <h3>Session Attributes</h3>
+                <c:choose>
+                    <c:when test="${not empty sessionAttributes}">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Attribute Name</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="entry" items="${sessionAttributes}">
+                                    <tr>
+                                        <td><strong><c:out value="${entry.key}"/></strong></td>
+                                        <td><c:out value="${entry.value}"/></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <p style="color: #999;">No session attributes found.</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            
+            <!-- Cookies Section -->
+            <div class="profile-info">
+                <h3>Cookies</h3>
+                <c:choose>
+                    <c:when test="${not empty cookies}">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Cookie Name</th>
+                                    <th>Cookie Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="entry" items="${cookies}">
+                                    <tr>
+                                        <td><strong><c:out value="${entry.key}"/></strong></td>
+                                        <td><c:out value="${entry.value}"/></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <p style="color: #999;">No cookies found.</p>
+                    </c:otherwise>
+                </c:choose>
             </div>
             
             <div class="profile-actions">

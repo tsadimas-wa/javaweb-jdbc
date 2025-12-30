@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    
-     private UserDAO userDAO;
+
+    private UserDAO userDAO;
 
     @Override
     public void init() {
@@ -33,10 +33,10 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 8345605719292191551L;
     private final String userID = "admin";
     private final String password = "password";
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 
     }
 
@@ -46,44 +46,39 @@ public class LoginServlet extends HttpServlet {
         // get request parameters for username and password
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         String errorMsg = null;
-		if (username == null || username.equals("")) {
-			errorMsg = "Username can't be null or empty";
-		}
-		if (password == null || password.equals("")) {
-			errorMsg = "Password can't be null or empty";
-		}
+        if (username == null || username.equals("")) {
+            errorMsg = "Username can't be null or empty";
+        }
+        if (password == null || password.equals("")) {
+            errorMsg = "Password can't be null or empty";
+        }
 
-
-       if (errorMsg != null) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>" + errorMsg + "</font>");
-			rd.include(request, response);
-		} else
-       {
+        if (errorMsg != null) {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
+            PrintWriter out = response.getWriter();
+            out.println("<font color=red>" + errorMsg + "</font>");
+            rd.include(request, response);
+        } else {
             try {
                 User user = userDAO.login(username, password);
                 if (user != null) {
                     HttpSession session = request.getSession();
-		    session.setAttribute("user", user);
-		    request.setAttribute("user", user);
-		    request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
-                }
-                else {
-//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/login");
-//		    PrintWriter out = response.getWriter();
-		    System.out.println("User not found with username=" + username);
-//		    out.println("<font color=red>No user found with given email id, please register first.</font>");
+                    session.setAttribute("user", user);
+                    request.setAttribute("user", user);
+                    request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
+                } else {
+
+                    System.out.println("User not found with username=" + username);
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-    }
+
+        }
     }
 
 }

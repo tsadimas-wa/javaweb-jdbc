@@ -103,7 +103,7 @@ CREATE TABLE users (
 1. Ανοίξτε τερματικό μέσα στον φάκελο του project.
 2. Εκτελέστε την εντολή:
 
-```βαση
+```bash
 mvn clean package cargo:run
 ```
 
