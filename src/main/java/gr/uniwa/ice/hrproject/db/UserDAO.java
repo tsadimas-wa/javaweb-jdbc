@@ -33,6 +33,8 @@ public class UserDAO {
             return rowsInserted > 0;
 
         } catch (Exception e) {
+            System.err.println("Error inserting user: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }

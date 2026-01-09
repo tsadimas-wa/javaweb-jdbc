@@ -39,6 +39,16 @@ public class DatabaseConnection {
         // Η βάση θα αποθηκευτεί στο C:\Users\Giannis\hr_project.db
         String dbUrl = "jdbc:sqlite:" + userHome + "/hr_project.db";
 
-        return DriverManager.getConnection(dbUrl);
+        Connection conn = DriverManager.getConnection(dbUrl);
+        
+        // Enable foreign key constraints and WAL mode for better concurrency
+        try (var stmt = conn.createStatement()) {
+            stmt.execute("PRAGMA foreign_keys = ON;");
+            stmt.execute("PRAGMA journal_mode = WAL;");
+        } catch (SQLException e) {
+            System.err.println("Warning: Could not set PRAGMA settings: " + e.getMessage());
+        }
+        
+        return conn;
     }
 }
