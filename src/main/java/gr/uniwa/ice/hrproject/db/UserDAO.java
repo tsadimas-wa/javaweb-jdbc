@@ -73,9 +73,6 @@ public class UserDAO {
     }
 
     public User login(String username, String password) throws SQLException {
-        // String sql = "SELECT u.user_id, u.username, u.email, u.job_id, j.job_title "
-        //            + "FROM users u JOIN jobs j ON u.job_id = j.job_id "
-        //            + "WHERE u.username = ? AND u.password = crypt(?, u.password) LIMIT 1";
         String sql = "SELECT u.user_id, u.username, u.email, u.job_id, j.job_title "
                    + "FROM users u JOIN jobs j ON u.job_id = j.job_id "
                    + "WHERE u.username = ? AND u.password = SHA2(?, 256) LIMIT 1";           

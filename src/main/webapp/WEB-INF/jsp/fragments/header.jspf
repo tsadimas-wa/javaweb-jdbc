@@ -48,3 +48,9 @@
     </nav>
 </header>
 <main class="site-main">
+<c:if test="${not empty error}">
+    <div style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; margin: 10px 0;">
+        <strong>Error: </strong> <c:out value="${error}" />
+    </div>
+</c:if> 
+    
