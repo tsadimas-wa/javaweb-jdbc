@@ -11,4 +11,5 @@
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/ProfileServlet.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/RegisterServlet.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/servlet/TestDbServlet.java
+/home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/util/SessionListener.java
 /home/rg/Teaching/uniwa/javaweb-jdbc/src/main/java/gr/uniwa/ice/hrproject/util/SessionUtil.java
