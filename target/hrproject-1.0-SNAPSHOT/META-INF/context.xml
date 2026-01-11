@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/hrproject">
-    <Environment name="DB_URL" value="jdbc:postgresql://localhost:5432/hrdb" type="java.lang.String" override="false"/>
-    <Environment name="DB_USER" value="myuser" type="java.lang.String" override="false"/>
-    <Environment name="DB_PASSWORD" value="mypassword" type="java.lang.String" override="false"/>
+    <Environment name="DB_URL" 
+                 value="jdbc:mysql://127.0.0.1:3306/hrdb?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC" 
+                 type="java.lang.String" override="false"/>
+
+    <Environment name="DB_USER" value="dbuser" type="java.lang.String" override="false"/>
+    <Environment name="DB_PASSWORD" value="pass123" type="java.lang.String" override="false"/>
 </Context>

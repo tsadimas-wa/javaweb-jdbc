@@ -30,10 +30,7 @@ public class LoginServlet extends HttpServlet {
         userDAO = new UserDAO();
     }
 
-    private static final long serialVersionUID = 8345605719292191551L;
-    private final String userID = "admin";
-    private final String password = "password";
-
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

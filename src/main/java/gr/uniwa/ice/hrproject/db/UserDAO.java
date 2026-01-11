@@ -24,7 +24,10 @@ import java.util.logging.Logger;
 public class UserDAO {
 
     public boolean registerUser(User user) {
-        String sql = "INSERT INTO users (username, email, password, job_id) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)";
+        // for postgres
+        //String sql = "INSERT INTO users (username, email, password, job_id) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)";
+        // for mysql
+        String sql = "INSERT INTO users (username, email, password, job_id) VALUES (?, ?, SHA2(?, 256), ?)";
 
         // Try-with-resources ensures connection closes automatically
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -70,9 +73,12 @@ public class UserDAO {
     }
 
     public User login(String username, String password) throws SQLException {
+        // String sql = "SELECT u.user_id, u.username, u.email, u.job_id, j.job_title "
+        //            + "FROM users u JOIN jobs j ON u.job_id = j.job_id "
+        //            + "WHERE u.username = ? AND u.password = crypt(?, u.password) LIMIT 1";
         String sql = "SELECT u.user_id, u.username, u.email, u.job_id, j.job_title "
                    + "FROM users u JOIN jobs j ON u.job_id = j.job_id "
-                   + "WHERE u.username = ? AND u.password = crypt(?, u.password) LIMIT 1";
+                   + "WHERE u.username = ? AND u.password = SHA2(?, 256) LIMIT 1";           
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.setString(2, password);

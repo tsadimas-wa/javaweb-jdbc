@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
         // 4. Send response to user
         if (success) {
             // Redirect to a success page (or back to the form with a message)
-            response.sendRedirect("list_users");
+            response.sendRedirect("login");
         } else {
             request.setAttribute("error", "Registration failed");
             request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
