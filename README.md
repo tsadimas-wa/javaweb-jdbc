@@ -50,6 +50,7 @@ CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
     job_id INT REFERENCES jobs(job_id),
     password VARCHAR(255) DEFAULT '1234' -- Προαιρετικό πεδίο αν υλοποιηθεί Login
 );
