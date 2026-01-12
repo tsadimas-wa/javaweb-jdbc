@@ -8,8 +8,8 @@ gr/uniwa/ice/hrproject/servlet/ListUsersServlet.class
 gr/uniwa/ice/hrproject/servlet/LogoutServlet.class
 gr/uniwa/ice/hrproject/servlet/ProfileServlet.class
 gr/uniwa/ice/hrproject/resources/JakartaEE10Resource.class
-gr/uniwa/ice/hrproject/db/DatabaseConnection.class
 gr/uniwa/ice/hrproject/entity/Job.class
+gr/uniwa/ice/hrproject/db/DatabaseConnection.class
 gr/uniwa/ice/hrproject/db/UserDAO.class
 gr/uniwa/ice/hrproject/servlet/TestDbServlet.class
 gr/uniwa/ice/hrproject/util/SessionListener.class

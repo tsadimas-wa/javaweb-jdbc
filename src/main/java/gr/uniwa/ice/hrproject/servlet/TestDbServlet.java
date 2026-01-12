@@ -25,7 +25,7 @@ public class TestDbServlet extends HttpServlet {
             
             try (Connection conn = DatabaseConnection.getConnection()) {
                 if (conn != null) {
-                    out.println("<p style='color:green'>Success! Connected to PostgreSQL.</p>");
+                    out.println("<p style='color:green'>Success! Connected to MySQL.</p>");
                     out.println("<p>Product: " + conn.getMetaData().getDatabaseProductName() + "</p>");
                 }
             } catch (Exception e) {
