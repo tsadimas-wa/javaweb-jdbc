@@ -63,9 +63,12 @@ CREATE TABLE users (
 
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/hrproject">
-    <Environment name="DB_URL" value="jdbc:postgresql://localhost:5432/ΟΝΟΜΑ_ΒΑΣΗΣ" type="java.lang.String" override="false"/>
-    <Environment name="DB_USER" value="TO_USERNAME_ΣΟΥ" type="java.lang.String" override="false"/>
-    <Environment name="DB_PASSWORD" value="Ο_ΚΩΔΙΚΟΣ_ΣΟΥ" type="java.lang.String" override="false"/>
+    <Environment name="DB_URL" 
+                 value="jdbc:mysql://localhost:3306/hr_db?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC" 
+                 type="java.lang.String" override="false"/>
+
+    <Environment name="DB_USER" value="root" type="java.lang.String" override="false"/>
+    <Environment name="DB_PASSWORD" value="" type="java.lang.String" override="false"/>
 </Context>
 ```
 ### 4. Build & Run
